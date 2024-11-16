@@ -2,7 +2,7 @@ const mainIcon = 'web-bez-andreje.png'
 
 function getReplacementUrl () {
   if (typeof global.chrome !== 'undefined') {
-    return global.chrome.extension.getURL(mainIcon)
+    return "chrome-extension://__MSG_@@" + global.chrome.runtime.id + "/" + mainIcon
   }
   if (typeof global.safari !== 'undefined') {
     return `${global.safari.extension.baseURI}${mainIcon}`
