@@ -36,11 +36,11 @@ const icons = {}
 
 function createManifest () {
   const manifest = {
-    manifest_version: 2,
+    manifest_version: 3,
     name: 'Nakupuj bez Andreje',
     description: pkg.description,
     version: pkg.version,
-    browser_action: {
+    action: {
       default_icon: mainIcon,
       default_popup: 'popup.html'
     },
@@ -67,7 +67,15 @@ function createManifest () {
         run_at: 'document_end'
       }
     ],
-    web_accessible_resources: [mainIcon]
+    web_accessible_resources: [{
+      resources: [
+        mainIcon
+      ],
+      matches: [
+        "*://*/*"
+      ]
+
+    }]
   }
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2))
   fs.copyFileSync(mainIconSrc, mainIconPath)
