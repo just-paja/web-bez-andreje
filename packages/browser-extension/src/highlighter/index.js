@@ -1,7 +1,7 @@
 const { matchBlacklistedBrand } = require('./brands')
 const { observe } = require('../observer')
 const { reduceOpacity } = require('./reduceOpacity')
-const { replaceImages } = require('./replaceImages')
+const { replaceImages, replaceSources } = require('./replaceImages')
 const { colorMark } = require('./colorMark')
 
 function matchElementText (contentNode) {
@@ -24,6 +24,7 @@ function createHighlighter (config) {
     setTitle(node, brand)
     if (config.replaceWithLogo) {
       replaceImages(node, brand)
+      replaceSources(node, brand)
     }
     if (config.reduceOpacity) {
       reduceOpacity(node, brand)
