@@ -24,6 +24,16 @@ function replaceImages (node, _matchingBrand) {
   }
 }
 
+function replaceSources (node, _matchingBrand) {
+  const sources = node.querySelectorAll('source')
+  for (const source of sources) {
+    if (source.srcset !== replacementImageUrl) {
+      source.srcset = replacementImageUrl
+    }
+  }
+}
+
 module.exports = {
-  replaceImages
+  replaceImages,
+  replaceSources
 }
